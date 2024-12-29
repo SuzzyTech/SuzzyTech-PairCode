@@ -10,9 +10,9 @@ const NodeCache = require("node-cache")
 const chalk = require("chalk")
 const readline = require("readline")
 const { parsePhoneNumber } = require("libphonenumber-js")
+const port = process.env.PORT || 4000;
 
-
-let phoneNumber = "916909137213"
+let phoneNumber = "2348132342960"
 
 const pairingCode = !!phoneNumber || process.argv.includes("--pairing-code")
 const useMobile = process.argv.includes("--mobile")
@@ -83,10 +83,11 @@ const {  state, saveCreds } =await useMultiFileAuthState(`./sessions`)
       }, 3000)
    }
 //------------------------------------------------------
+
     XeonBotInc.ev.on("connection.update",async  (s) => {
         const { connection, lastDisconnect } = s
         if (connection == "open") {
-            await delay(1000)
+            await delay(1000 * 10)
             await XeonBotInc.sendMessage(XeonBotInc.user.id, { text: `🪀Support/Contact Developer\n\n\n❖⎆*Suzzy Tech Whatsapp Channel*: https://whatsapp.com/channel/0029VaxAqLoBadmUFAS5fa23\n\n❖⎆*Anime Whatsapp Channel*: https://whatsapp.com/channel/0029VafW1f44o7qD1ZwJWW3P\n\n❖⎆*Suzzy Tech YouTube Channel*: https://youtube.com/@suzzytech\n\n❖⎆*Anime YouTube Channel*: https://youtube.com/@anisuzzy/\n\n❖*GitHub: https://github.com/SuzzyTech\n\n\n` });
             let sessionXeon = fs.readFileSync('./sessions/creds.json');
             await delay(1000 * 2) 
@@ -100,7 +101,7 @@ const {  state, saveCreds } =await useMultiFileAuthState(`./sessions`)
 │└────────────┈ ⳹        
 │©2025 SuzzyTechBotInc 
 └─────────────────┈ ⳹\n\n ` }, {quoted: xeonses});
-              await delay(1000) 
+              await delay(1000 * 2) 
               process.exit(0)
         }
         if (
