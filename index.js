@@ -10,7 +10,6 @@ const NodeCache = require("node-cache")
 const chalk = require("chalk")
 const readline = require("readline")
 const { parsePhoneNumber } = require("libphonenumber-js")
-const port = process.env.PORT || 4000;
 
 let phoneNumber = "2348132342960"
 
