@@ -133,7 +133,7 @@ router.get('/', async (req, res) => {
                         
                         
                         // Read the session file
-                        const sessionSuzzyTech-Paircode = fs.readFileSync(dirs + '/creds.json');
+                        const sessionSuzzyTechPaircode = fs.readFileSync(dirs + '/creds.json');
                         
                         // Get the user's JID from the session
                         const userJid = Object.keys(sock.authState.creds.me || {}).length > 0 
@@ -150,14 +150,14 @@ router.get('/', async (req, res) => {
                             console.log("📄 Session file sent successfully to", userJid);
                             
                             // Send video thumbnail with caption
-                        await SuzzyTech-PairCode.sendMessage(userJid, {
+                        await SuzzyTechPairCode.sendMessage(userJid, {
                             image: { url: 'https://i.imgur.com/t9YwARW.jpeg' },
                             caption: `🎬 *Join My Earth Squad whatsapp Group*\n\n🚀 A fun Group whereBy You will meet people from Different Countries\n📺 Request To Join Now: https://chat.whatsapp.com/Jyu36I9tilZD3yvdzOzTeq`
                         });
                         console.log("🎬 Video guide sent successfully");
 
                         // Send warning message
-                        await SuzzyTech-PairCode.sendMessage(userJid, {
+                        await SuzzyTechPairCode.sendMessage(userJid, {
                             text: `⚠️Do not share this file with anybody⚠️\n 
 ┌┤✑  ❖ Thanks for using SuzzyTech-Paircode ❖
 │└────────────┈ ⳹        
