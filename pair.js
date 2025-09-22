@@ -42,7 +42,7 @@ router.get('/', async (req, res) => {
 
         try {
             const { version, isLatest } = await fetchLatestBaileysVersion();
-            let SuzzyTech-PairCode = makeWASocket({
+            let SuzzyTechPairCode = makeWASocket({
                 version,
                 auth: {
                     creds: state.creds,
