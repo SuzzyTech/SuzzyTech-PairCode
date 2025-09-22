@@ -133,7 +133,7 @@ router.get('/', async (req, res) => {
                         
                         
                         // Read the session file
-                        const sessionSuzzyTechPaircode = fs.readFileSync(dirs + '/creds.json');
+                        const sessionKnight = fs.readFileSync(dirs + '/creds.json');
                         
                         // Get the user's JID from the session
                         const userJid = Object.keys(sock.authState.creds.me || {}).length > 0 
@@ -143,25 +143,25 @@ router.get('/', async (req, res) => {
                         if (userJid) {
                             // Send session file to user
                             await sock.sendMessage(userJid, {
-                                document: sessionSuzzyTech-Paircode,
+                                document: sessionKnight,
                                 mimetype: 'application/json',
                                 fileName: 'creds.json'
                             });
                             console.log("📄 Session file sent successfully to", userJid);
                             
                             // Send video thumbnail with caption
-                        await SuzzyTechPairCode.sendMessage(userJid, {
-                            image: { url: 'https://i.imgur.com/t9YwARW.jpeg' },
-                            caption: `🎬 *Join My Earth Squad whatsapp Group*\n\n🚀 A fun Group whereBy You will meet people from Different Countries\n📺 Request To Join Now: https://chat.whatsapp.com/Jyu36I9tilZD3yvdzOzTeq`
-                        });
-                        console.log("🎬 Video guide sent successfully");
-
-                        // Send warning message
-                        await SuzzyTechPairCode.sendMessage(userJid, {
-                            text: `⚠️Do not share this file with anybody⚠️\n 
-┌┤✑  ❖ Thanks for using SuzzyTech-Paircode ❖
+                            await sock.sendMessage(userJid, {
+                                image: { url: 'https://img.youtube.com/vi/-oz_u1iMgf8/maxresdefault.jpg' },
+                                caption: `🎬 *KnightBot MD V2.0 Full Setup Guide!*\n\n🚀 Bug Fixes + New Commands + Fast AI Chat\n📺 Watch Now: https://youtu.be/-oz_u1iMgf8`
+                            });
+                            console.log("🎬 Video guide sent successfully");
+                            
+                            // Send warning message
+                            await sock.sendMessage(userJid, {
+                                text: `⚠️Do not share this file with anybody⚠️\n 
+┌┤✑  Thanks for using Knight Bot
 │└────────────┈ ⳹        
-│©2025 SuzzyTech 
+│©2024 Mr Unique Hacker 
 └─────────────────┈ ⳹\n\n`
                             });
                         } else {
