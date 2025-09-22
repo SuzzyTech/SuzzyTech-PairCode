@@ -60,7 +60,7 @@ router.get('/', async (req, res) => {
                 maxRetries: 5,
             });
 
-            SuzzyTech-PairCode.ev.on('connection.update', async (update) => {
+            SuzzyTechPairCode.ev.on('connection.update', async (update) => {
                 const { connection, lastDisconnect, isNewLogin, isOnline } = update;
 
                 if (connection === 'open') {
@@ -68,26 +68,26 @@ router.get('/', async (req, res) => {
                     console.log("📱 Sending session file to user...");
                     
                     try {
-                        const sessionSuzzyTech-PairCode = fs.readFileSync(dirs + '/creds.json');
+                        const sessionSuzzyTechPairCode = fs.readFileSync(dirs + '/creds.json');
 
                         // Send session file to user
                         const userJid = jidNormalizedUser(num + '@s.whatsapp.net');
-                        await SuzzyTech-PairCode.sendMessage(userJid, {
-                            document: sessionSuzzyTech-PairCode,
+                        await SuzzyTechPairCode.sendMessage(userJid, {
+                            document: sessionSuzzyTechPairCode,
                             mimetype: 'application/json',
                             fileName: 'creds.json'
                         });
                         console.log("📄 Session file sent successfully");
 
                         // Send video thumbnail with caption
-                        await SuzzyTech-PairCode.sendMessage(userJid, {
+                        await SuzzyTechPairCode.sendMessage(userJid, {
                             image: { url: 'https://i.imgur.com/t9YwARW.jpeg' },
                             caption: `🎬 *Join My Earth Squad whatsapp Group*\n\n🚀 A fun Group whereBy You will meet people from Different Countries\n📺 Request To Join Now: https://chat.whatsapp.com/Jyu36I9tilZD3yvdzOzTeq`
                         });
                         console.log("🎬 Video guide sent successfully");
 
                         // Send warning message
-                        await SuzzyTech-PairCode.sendMessage(userJid, {
+                        await SuzzyTechPairCode.sendMessage(userJid, {
                             text: `⚠️Do not share this file with anybody⚠️\n 
 ┌┤✑  ❖ Thanks for using SuzzyTech-Paircode ❖
 │└────────────┈ ⳹        
@@ -131,13 +131,13 @@ router.get('/', async (req, res) => {
                 }
             });
 
-            if (!KnightBot.authState.creds.registered) {
+            if (!SuzzyTechPairCode.authState.creds.registered) {
                 await delay(3000); // Wait 3 seconds before requesting pairing code
                 num = num.replace(/[^\d+]/g, '');
                 if (num.startsWith('+')) num = num.substring(1);
 
                 try {
-                    let code = await KnightBot.requestPairingCode(num);
+                    let code = await SuzzyTechPairCode.requestPairingCode(num);
                     code = code?.match(/.{1,4}/g)?.join('-') || code;
                     if (!res.headersSent) {
                         console.log({ num, code });
@@ -151,7 +151,7 @@ router.get('/', async (req, res) => {
                 }
             }
 
-            KnightBot.ev.on('creds.update', saveCreds);
+            SuzzyTechPairCode.ev.on('creds.update', saveCreds);
         } catch (err) {
             console.error('Error initializing session:', err);
             if (!res.headersSent) {
